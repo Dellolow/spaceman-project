@@ -1,6 +1,6 @@
 /*-------------- Constants -------------*/
 const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-conts WORDBANK = ['pluto', 'mars', 'comet', 'bigbang','nebula', 'earth', 'stars']
+const WORDBANK = ['pluto', 'mars', 'comet', 'bigbang','nebula', 'earth', 'stars'];
 const SPRITE_WIDTH = 504;
 const TOTAL_FRAMES =6;
 /*---------- Variables (state) ---------*/
@@ -51,15 +51,19 @@ function handleBtnClick(evt) {
 }
 
 
-function initGame()[
+function initGame(){
+
+}
   //Render the initial game state ...
 
-]
+;
 
 // Render the word with blanks and revealed letters
-function renderWord()[
+function renderWord() {
 
-]
+}
+
+
 
 function handleGuess(letter) {
   //check if the letter is in the word
