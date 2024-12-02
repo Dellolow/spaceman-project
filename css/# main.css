@@ -1,0 +1,17 @@
+body {
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  main {
+    display: grid;
+    grid-template-columns: repeat(2, 600px);
+  }
+  
+  #spaceman-filmstrip {
+    width: 504px;
+    height: 687px;
+    background-image: url("imgs/spaceman-filmstrip.png");
+    background-position-x: 0;
+  }
+  

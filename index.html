@@ -1,59 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SpaceMan Game</title>
-    <link rel="stylesheet" href="css/main.css">
-    <script defer src="js/main.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>SpaceMan</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script defer src="script.js"></script>
 </head>
 
-<body class="flex-ctr">
-    <h1>SPACEMAN</h1>
-
-    <!-- Spaceman Image Section -->
-    <section id="spaceman-image" class="flex-ctr">
-        <img id="current-spaceman" src="https://imgur.com/a/2gv35mp" alt="Spaceman image for remaining guesses">
+<body>
+    <header>
+        <h1>Spaceman</h1>
+        <p>Save the spaceman! Guess the word before he floats away into space!</p>
+    </header>
+  
+    <section id="btns-container">
+        <img src="spaceman-filmstrip.png" alt="Spaceman Animation">
+        <button>0</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
     </section>
-
-    <!-- Game Info Section -->
-    <section id="game-info" class="flex-ctr">
+    
+    <main>
+        <p id="instructions">Use the buttons or guess the letters to save the spaceman!</p>
         <div id="word-display">_ _ _ _ _</div>
-        <div id="remaining-guesses">Remaining Guesses: 6</div>
-        <div id="guessed-letters">Guessed Letters: None</div>
-    </section>
-
-    <!-- Letter Buttons Section -->
-    <section id="letter-buttons" class="flex-ctr">
-        <button>A</button>
-        <button>B</button>
-        <button>C</button>
-        <button>D</button>
-        <button>E</button>
-        <button>F</button>
-        <button>G</button>
-        <button>H</button>
-        <button>I</button>
-        <button>J</button>
-        <button>K</button>
-        <button>L</button>
-        <button>M</button>
-        <button>N</button>
-        <button>O</button>
-        <button>P</button>
-        <button>Q</button>
-        <button>R</button>
-        <button>S</button>
-        <button>T</button>
-        <button>U</button>
-        <button>V</button>
-        <button>W</button>
-        <button>X</button>
-        <button>Y</button>
-        <button>Z</button>
-    </section>
-
-    <!-- Restart Game Button -->
-    <button id="restart-game">Restart Game</button>
+        <div id="spaceman-filmstrip"></div>
+    </main>
 </body>
+
 </html>

@@ -1,77 +1,86 @@
-/*----- constants -----*/
-// Define any constants that remain the same throughout the game.
-// For example, the number of maximum guesses, or a set of test words.
-const MAX_GUESSES = 6;
-const WORDS = ["SPACEMAN", "JAVASCRIPT", "CODING", "PROGRAMMER"];
+/*-------------- Constants -------------*/
+const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+conts WORDBANK = ['pluto', 'mars', 'comet', 'bigbang','nebula', 'earth', 'stars']
+const SPRITE_WIDTH = 504;
+const TOTAL_FRAMES =6;
+/*---------- Variables (state) ---------*/
+let selectedWord; //The word to guess
+let usedLetters = []; // Array to tracked guessed letters
+let remainingGuesses; //Number of remaining 
+let revealedWord; // String representing the current state of the guessed word.
+let curFrame;
 
-/*----- state variables -----*/
-// Declare the state variables to track the game's current state.
-let word;             // The word to be guessed
-let guessedLetters;   // Array of guessed letters
-let remainingGuesses; // Number of incorrect guesses remaining
+/*----- Cached Element References  -----*/
+const imgEl = document.querySelector('img');
+const filmstripEl = document.getElementById('spaceman-filmstrip');
+const btnEls = [...document.querySelectorAll('#btns-container > button')];
 
-/*----- cached elements  -----*/
-// Cache references to DOM elements that will be updated frequently.
-const wordDisplayEl = document.getElementById("word-display");
-const remainingGuessesEl = document.getElementById("remaining-guesses");
-const guessedLettersEl = document.getElementById("guessed-letters");
-const letterButtons = document.querySelectorAll("#letter-buttons button");
-const restartButton = document.getElementById("restart-game");
+const lettersSlotsEl = document.getElementById('board');
+const guessedLettersEl = document.getElementById('guessed-letters');
+const remainingGuessesEl = document.getElementById('remaining-guesses');
+const messageEl = document.getElementById('message');
+const resetButton = document.getElementById('reset-button');
+const letterButtonsEl = document.getElementById('letter-buttons');
+const spacemanEl = document.getElementById('spaceman'); //Image container
+/*-------------- Functions -------------*/
+//Initialize the game
+init();
 
-/*----- event listeners -----*/
-// Add event listeners to the buttons for interactivity.
-letterButtons.forEach(button => {
-  button.addEventListener("click", handleLetterGuess);
-});
-
-restartButton.addEventListener("click", initialize);
-
-/*----- functions -----*/
-
-/**
- * Initialize the game state and render the initial UI.
- */
-function initialize() {
-  // Randomly pick a word from the WORDS array
-  word = WORDS[Math.floor(Math.random() * WORDS.length)];
-
-  // Reset state variables
-  guessedLetters = [];
-  remainingGuesses = MAX_GUESSES;
-
-  // Render the initial game state
+function init() {
+  curframe = 0;
   render();
 }
 
-/**
- * Handle the user guessing a letter.
- * @param {Event} evt - The event triggered by clicking a letter button.
- */
-function handleLetterGuess(evt) {
-  const guessedLetter = evt.target.textContent;
-
-  // Disable the button to prevent re-guessing the same letter
-  evt.target.disabled = true;
-
-  // Check if the guessed letter is in the word
-  if (word.includes(guessedLetter)) {
-    guessedLetters.push(guessedLetter);
-  } else {
-    remainingGuesses--;
-  }
-
-  // Re-render the UI to reflect the new game state
-  render();
-
-  // Check for win/loss conditions
-  checkGameStatus();
-}
-
-/**
- * Render the game's current state to the DOM.
- */
 function render() {
+  imgEl.src = `imgs/spaceman-${curFrame}.png`;
+  filmstripEl.style.backgroundPosition = `-${SPRITE_WIDTH * (6 - curFrame)}px`;
+  btnEls.forEach(function(btn) {
+    btn.disabled = false;
+    btn.style.backgroundColor = 'white';
+  });
+  btnEls[curFrame].disabled = true;
+  btnEls[curFrame].style.backgroundColor = 'palegreen';
+}
+
+function handleBtnClick(evt) {
+  const btn = evt.target;
+  // Ensure that a button was clicked
+  if (!btnEls.includes(btn)) return;
+  curFrame = parseInt(btn.textContent);
+  render();
+}
 
 
-// Kick off the app by calling initialize
-initialize();
+function initGame()[
+  //Render the initial game state ...
+
+]
+
+// Render the word with blanks and revealed letters
+function renderWord()[
+
+]
+
+function handleGuess(letter) {
+  //check if the letter is in the word
+  //Update game state (remaining guesses. revealedWord, usedLetters)
+  //Render the updated game state 
+  //Check for win/lose condition
+}
+
+function checkWin() {
+  //Compare revealedWord with selectedWord
+}
+
+function checkLose(){
+
+}
+
+function resetGame() {
+
+}
+/*----------- Event Listeners ----------*/
+letterButtonsEl.addEventListener('click', (event) => {
+  const clickedLetter= event.target.textContent;
+})
+document.getElementById('btns-container').addEventListener('click', handleBtnClick);
