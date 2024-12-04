@@ -40,8 +40,13 @@ function init() {
 // Update all impacted state, then call render
 function handleGuess(evt) {
     const letter = evt.target.innerText;
-    console.log(letter);
+    if (selectedWord.includes(letter)) {
+
+    } else {
+        wrongGuesses.push(letter);
+    }
     // Gaurd against letter already used or game over or button miss
+    render();
 }
 // Update displayed word with correct guesses
 function updateDisplayedWord() {
