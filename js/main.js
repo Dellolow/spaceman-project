@@ -54,7 +54,7 @@ function renderMessage() {
         msgEl.innerText = 'LOSER';
         disabledLetterButtons();
     } else {
-        msgEl.innerText = `${MAX_WRONG_GUESSES - wrongGuesses.length} INCORRECT GUESSES REMAINING`; 
+        msgEl.innerText = `${MAX_WRONG_GUESSES - wrongGuesses.length} INCORRECT GUESSES REMAINING`;
     }
 }
 

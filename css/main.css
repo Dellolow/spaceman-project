@@ -8,6 +8,11 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #1e1e2f;
+  color: #f8f8f2 ;
+  margin: 0;
+  position: relative;
+  
 }
 
 #spaceman {
@@ -23,18 +28,72 @@ body {
   letter-spacing: 1rem;
   font-size: 2rem;
   text-align: center;
+  color: #8be9fd;
 }
 
 h1 {
   text-align: center;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+p {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
 }
 
 #letter-btns > button {
   font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  padding: 10px 10px;
+  border: 2px solid #6272a4;
+  background-color: #282a36;
+  color: purple;
+  border-radius: 5px;
+  cursor: grabbing;
+  transition: all 0.3s ease-in-out;
 }
+#letter-btns > button:hover {
+  background-color: #6272a4;
+  color: #1e1e2f;
+  transform: translateY(-5px);
+}
+
 
 #reset-button {
   text-align: center;
-  font-size: rem;
+  font-size: 1.5rem;
+  padding: 10ox 20px;
+  margin-top: 30px;
+  border: 10px solid transparent;
+  background-color: #ff79c6;
+  color: #1e1e2f;
+  border-radius: 30px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  transition: all 0.4s ease-in-out;
   
+}
+
+#reset-button:hover {
+  background-color: #bd93f9;
+  color: #f8f8f2;
+  transform: rotate3d();
+  transition: all 0.2s;
+  border: 3px solid #ff79c6;
+}
+
+#reset-button:active {
+transform: rotate(0deg); scale(1);
+}
+
+#reset-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
