@@ -70,6 +70,10 @@ function init() {
     wrongGuesses = [];
     selectedWord = WORDBANK[Math.floor(Math.random() * WORDBANK.length)].toUpperCase();
     displayedWord = '_'.repeat(selectedWord.length);
+    letterBtns.forEach(function(btn) {
+        btn.disabled = false; // Re-enable the button
+        btn.style.backgroundColor = 'white'; // Reset button style
+    });
     render();
 }
 
