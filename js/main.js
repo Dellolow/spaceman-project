@@ -1,66 +1,48 @@
 /*-------------- Constants -------------*/
 const SPRITE_WIDTH = 504; // Width of each frame in the filmstrip
 const TOTAL_FRAMES = 6; // Total number of frames in the filmstrip
-const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; // Letters available for guessing
-const WORDBANK = ['pluto', 'mars', 'comet', 'bigbang', 'nebula', 'earth', 'stars']; // Word bank
+const WORDBANK = ['PLUTO', 'MARS', 'COMET', 'BIGBANG', 'NEBULA', 'EARTH', 'STARS']; // Word bank
 
 /*---------- Variables (state) ---------*/
 let selectedWord; // The word to guess
 let displayedWord; // The word as shown to the player
-let wrongGuesses = []; // Incorrect guesses
-let correctGuesses = []; // Correctly guessed letters
+let wrongGuesses;   // Incorrect guesses
+let correctGuesses;   // Correctly guessed letters
 
 /*----- Cached Element References  -----*/
 const spacemanEl = document.getElementById('spaceman');
 const wordDisplayEl = document.getElementById('word-display');
 const wrongLettersEl = document.getElementById('wrong-letters');
-const letterButtonsContainer = document.getElementById('letters');
+const letterButtonsContainer = document.getElementById('letter-btns');
 const resetButton = document.getElementById('reset-button');
+
+/*----------- Event Listeners ----------*/
+resetButton.addEventListener('click', init);
+letterButtonsContainer.addEventListener('click', handleGuess);
+
 
 /*-------------- Functions -------------*/
 function render() {
   spacemanEl.style.backgroundPositionX = `-${SPRITE_WIDTH * (6 - wrongGuesses.length)}px`;
+  wordDisplayEl.textContent = displayedWord;
 }
 // Start a new game
-function startGame() {
+function init() {
     // Reset state
     wrongGuesses = [];
     correctGuesses = [];
     selectedWord = WORDBANK[Math.floor(Math.random() * WORDBANK.length)].toUpperCase();
-    displayedWord = '_ '.repeat(selectedWord.length).trim();
-
-    // Update UI
-    wordDisplayEl.textContent = displayedWord;
-    // wrongLettersEl.textContent = '';
-    spacemanEl.style.backgroundPositionX = '0px'; // Reset spaceman to the first frame
-    generateLetterButtons();
-}
-
-// Generate letter buttons dynamically
-function generateLetterButtons() {
-    // letterButtonsContainer.innerHTML = '';
-    LETTERS.split('').forEach(letter => {
-        const button = document.createElement('button');
-        button.textContent = letter;
-        button.addEventListener('click', () => handleGuess(letter, button));
-        // letterButtonsContainer.appendChild(button);
-    });
+    displayedWord = '_'.repeat(selectedWord.length);
+    render();
 }
 
 // Handle a letter guess
-function handleGuess(letter, button) {
-    button.disabled = true; // Disable the button after use
-    if (selectedWord.includes(letter)) {
-        correctGuesses.push(letter);
-        updateDisplayedWord();
-    } else {
-        wrongGuesses.push(letter);
-        wrongLettersEl.textContent = wrongGuesses.join(', ');
-        updateSpacemanFrame();
-    }
-    checkGameStatus();
+// Update all impacted state, then call render
+function handleGuess(evt) {
+    const letter = evt.target.innerText;
+    console.log(letter);
+    // Gaurd against letter already used or game over or button miss
 }
-
 // Update displayed word with correct guesses
 function updateDisplayedWord() {
     displayedWord = selectedWord
@@ -93,8 +75,6 @@ function disableAllButtons() {
     });
 }
 
-/*----------- Event Listeners ----------*/
-resetButton.addEventListener('click', startGame);
 
 /*---------- Initialize Game -----------*/
-startGame();
+init();

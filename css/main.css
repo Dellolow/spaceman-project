@@ -1,8 +1,32 @@
-#spaceman {
-    width: 504px;
-    height: 687px;
-    background-image: url("../imgs/spaceman-filmstrip.png");
-    background-position-x: 0;
-  }
+* {
+  box-sizing: border-box;
+}
 
-  
+body {
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#spaceman {
+  width: 504px;
+  height: 687px;
+  background-image: url("../imgs/spaceman-filmstrip.png");
+  background-position-x: 0;
+}
+
+#word-display {
+  letter-spacing: 1rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+#letter-btns > button {
+  font-family: 'Courier New', Courier, monospace;
+}
