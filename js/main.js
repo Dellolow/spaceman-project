@@ -22,6 +22,8 @@ const msgEl = document.querySelector('p');
 resetButton.addEventListener('click', init);
 letterButtonsContainer.addEventListener('click', handleGuess);
 
+/*---------- Initialize Game -----------*/
+init();
 
 /*-------------- Functions -------------*/
 function render() {
@@ -47,11 +49,19 @@ function renderLetterBtns() {
 function renderMessage() {
     if (selectedWord === displayedWord) {
         msgEl.innerText = 'WINNER';
+        disabledLetterButtons();
     } else if (wrongGuesses.length === MAX_WRONG_GUESSES) {
         msgEl.innerText = 'LOSER';
+        disabledLetterButtons();
     } else {
         msgEl.innerText = `${MAX_WRONG_GUESSES - wrongGuesses.length} INCORRECT GUESSES REMAINING`; 
     }
+}
+
+function disabledLetterButtons() {
+    letterBtns.forEach((btn) => {
+        btn.disabled = true;
+    });
 }
 
 // Start a new game
@@ -82,24 +92,8 @@ function handleGuess(evt) {
 }
 
 
-// Check if the game is won or lost
-function checkGameStatus() {
-    if (displayedWord.replace(/ /g, '') === selectedWord) {
-        alert('You saved the spaceman! You win!');
-        disableAllButtons();
-    } else if (wrongGuesses.length >= TOTAL_FRAMES) {
-        alert(`Game over! The word was "${selectedWord}".`);
-        disableAllButtons();
-    }
-}
-
-// Disable all letter buttons
-function disableAllButtons() {
-    document.querySelectorAll('#letters button').forEach(button => {
-        button.disabled = true;
-    });
-}
 
 
-/*---------- Initialize Game -----------*/
-init();
+
+
+

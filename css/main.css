@@ -32,3 +32,8 @@ h1 {
 #letter-btns > button {
   font-family: 'Courier New', Courier, monospace;
 }
+
+#reset-button {
+  text-align: center;
+  font-size: rem;
+}
