@@ -7,7 +7,6 @@ const WORDBANK = ['PLUTO', 'MARS', 'COMET', 'BIGBANG', 'NEBULA', 'EARTH', 'STARS
 let selectedWord; // The word to guess
 let displayedWord; // The word as shown to the player
 let wrongGuesses;   // Incorrect guesses
-let correctGuesses;   // Correctly guessed letters
 
 /*----- Cached Element References  -----*/
 const spacemanEl = document.getElementById('spaceman');
@@ -30,7 +29,6 @@ function render() {
 function init() {
     // Reset state
     wrongGuesses = [];
-    correctGuesses = [];
     selectedWord = WORDBANK[Math.floor(Math.random() * WORDBANK.length)].toUpperCase();
     displayedWord = '_'.repeat(selectedWord.length);
     render();
@@ -39,28 +37,21 @@ function init() {
 // Handle a letter guess
 // Update all impacted state, then call render
 function handleGuess(evt) {
-    const letter = evt.target.innerText;
+    const letter = evt.target.innerText; 
+    if (letter.length !== 1 || wrongGuesses.includes(letter) || displayedWord.includes(letter)) return;
     if (selectedWord.includes(letter)) {
-
+        let newDisplayedWord = '';
+        for (i = 0; i < selectedWord.length; i++) {
+            newDisplayedWord += selectedWord[i] === letter ? letter : displayedWord[i];  
+        }
+        displayedWord = newDisplayedWord;
     } else {
         wrongGuesses.push(letter);
     }
     // Gaurd against letter already used or game over or button miss
     render();
 }
-// Update displayed word with correct guesses
-function updateDisplayedWord() {
-    displayedWord = selectedWord
-        .split('')
-        .map(letter => (correctGuesses.includes(letter) ? letter : '_'))
-        .join(' ');
-    wordDisplayEl.textContent = displayedWord;
-}
 
-// Update the spaceman frame for each incorrect guess
-function updateSpacemanFrame() {
-    spacemanEl.style.backgroundPositionX = `${-SPRITE_WIDTH * wrongGuesses.length}px`;
-}
 
 // Check if the game is won or lost
 function checkGameStatus() {
