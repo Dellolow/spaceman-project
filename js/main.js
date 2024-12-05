@@ -9,6 +9,7 @@ let selectedWord; // The word to guess
 let displayedWord; // The word as shown to the player
 let wrongGuesses;   // Incorrect guesses
 
+
 /*----- Cached Element References  -----*/
 const spacemanEl = document.getElementById('spaceman');
 const wordDisplayEl = document.getElementById('word-display');
@@ -49,20 +50,16 @@ function renderLetterBtns() {
 function renderMessage() {
     if (selectedWord === displayedWord) {
         msgEl.innerText = 'WINNER';
-        disabledLetterButtons();
+        
     } else if (wrongGuesses.length === MAX_WRONG_GUESSES) {
         msgEl.innerText = 'LOSER';
-        disabledLetterButtons();
+        
     } else {
         msgEl.innerText = `${MAX_WRONG_GUESSES - wrongGuesses.length} INCORRECT GUESSES REMAINING`;
     }
 }
 
-function disabledLetterButtons() {
-    letterBtns.forEach((btn) => {
-        btn.disabled = true;
-    });
-}
+
 
 // Start a new game
 function init() {
@@ -70,10 +67,7 @@ function init() {
     wrongGuesses = [];
     selectedWord = WORDBANK[Math.floor(Math.random() * WORDBANK.length)].toUpperCase();
     displayedWord = '_'.repeat(selectedWord.length);
-    letterBtns.forEach(function (btn) {
-        btn.disabled = false; // Re-enable the button
-        btn.style.backgroundColor = 'white'; // Reset button style
-    });
+    
     render();
 }
 

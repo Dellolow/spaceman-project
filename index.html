@@ -2,11 +2,11 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>SpaceMan</title>
-  <link href="css/main.css" rel="stylesheet" type="text/css" />
-  <script defer src="js/main.js"></script> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Spaceman</title>
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
+    <script defer src="js/main.js"></script>
 </head>
 
 <body>
@@ -14,7 +14,18 @@
         <h1>Spaceman</h1>
         <p>Save the spaceman! Guess the word before he floats away into space!</p>
     </header>
-  
+
+
+    <div id="controls">
+        <label for="difficulty">Difficulty:</label>
+        <select id="difficulty">
+            <option value="6" selected>Easy</option>
+            <option value="4">Medium</option>
+            <option value="3">Hard</option>
+        </select>
+
+    </div>
+
     <section id="letter-btns">
         <button>A</button>
         <button>B</button>
@@ -43,10 +54,11 @@
         <button>Y</button>
         <button>Z</button>
     </section>
-    
+
     <main>
         <div id="word-display"></div>
         <div id="spaceman"></div>
+        <div id="msg-container"></div>
         <button id="reset-button">Play Again</button>
     </main>
 </body>
