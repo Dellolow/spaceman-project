@@ -27,14 +27,14 @@ init();
 
 /*-------------- Functions -------------*/
 function render() {
-  spacemanEl.style.backgroundPositionX = `-${SPRITE_WIDTH * (6 - wrongGuesses.length)}px`;
-  wordDisplayEl.textContent = displayedWord;
-  renderLetterBtns();
-  renderMessage();
+    spacemanEl.style.backgroundPositionX = `-${SPRITE_WIDTH * (6 - wrongGuesses.length)}px`;
+    wordDisplayEl.textContent = displayedWord;
+    renderLetterBtns();
+    renderMessage();
 }
 
 function renderLetterBtns() {
-    letterBtns.forEach(function(btn) {
+    letterBtns.forEach(function (btn) {
         const letter = btn.innerText;
         if (wrongGuesses.includes(letter)) {
             btn.style.backgroundColor = 'pink';
@@ -43,7 +43,7 @@ function renderLetterBtns() {
         } else {
             btn.style.backgroundColor = 'white';
         }
-    }); 
+    });
 }
 
 function renderMessage() {
@@ -70,7 +70,7 @@ function init() {
     wrongGuesses = [];
     selectedWord = WORDBANK[Math.floor(Math.random() * WORDBANK.length)].toUpperCase();
     displayedWord = '_'.repeat(selectedWord.length);
-    letterBtns.forEach(function(btn) {
+    letterBtns.forEach(function (btn) {
         btn.disabled = false; // Re-enable the button
         btn.style.backgroundColor = 'white'; // Reset button style
     });
@@ -80,12 +80,12 @@ function init() {
 // Handle a letter guess
 // Update all impacted state, then call render
 function handleGuess(evt) {
-    const letter = evt.target.innerText; 
+    const letter = evt.target.innerText;
     if (letter.length !== 1 || wrongGuesses.includes(letter) || displayedWord.includes(letter)) return;
     if (selectedWord.includes(letter)) {
         let newDisplayedWord = '';
         for (i = 0; i < selectedWord.length; i++) {
-            newDisplayedWord += selectedWord[i] === letter ? letter : displayedWord[i];  
+            newDisplayedWord += selectedWord[i] === letter ? letter : displayedWord[i];
         }
         displayedWord = newDisplayedWord;
     } else {
