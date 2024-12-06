@@ -78,13 +78,13 @@ p {
   font-size: 1.5rem;
   padding: 10px 20px;
   margin-top: 30px;
-  border: 10px solid transparent;
+  border: 0px solid transparent;
   background-color: #ff79c6;
   color: #1e1e2f;
   border-radius: 30px;
   cursor: pointer;
-  position: fixed;
-  top: 50%;
+  position: absolute;
+  top: 75%;
   left: 50%;
   transform: translate(-50%, -50%);
   transition: all 0.4s ease-in-out;
@@ -96,4 +96,12 @@ p {
   transform: scale(1.1);
 }
 
-#controls {}
+#controls-container {
+display:flex; 
+justify-content: center;
+margin-top: 100px;
+}
+
+main {
+  position: relative;
+}
